@@ -1,0 +1,15 @@
+bin/
+gen/
+a.settings/
+.classpath
+.project
+.properties
+*/*.class
+
+/.settings/org.eclipse.core.resources.prefs
+/ic_launcher-web.png
+/proguard-project.txt
+/project.properties
+/gen
+
+/lint.xml

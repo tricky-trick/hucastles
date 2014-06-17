@@ -76,7 +76,7 @@ public class MapActivity extends FragmentActivity {
 	String addressLine;
 	String stringLatitude;
 	String stringLongitude;
-	
+
 	public int setMyLocation() {
 		gpsTracker = new GPSTracker(MapActivity.this);
 		if (gpsTracker.canGetLocation()) {
@@ -117,12 +117,19 @@ public class MapActivity extends FragmentActivity {
 				@SuppressLint("NewApi")
 				@SuppressWarnings({ "unchecked", "rawtypes" })
 				public void run() {
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+					}
 					// check if GPS enabled
 					// Get a handle to the Map Fragment
 					if (map == null) {
-						map = ((SupportMapFragment) getSupportFragmentManager()
-								.findFragmentById(R.id.mapView)).getMap();
-						map.setMyLocationEnabled(true);
+						try {
+							map = ((SupportMapFragment) getSupportFragmentManager()
+									.findFragmentById(R.id.mapView)).getMap();
+							map.setMyLocationEnabled(true);
+						} catch (Exception e) {
+						}
 						gpsTracker = new GPSTracker(MapActivity.this);
 						setMyLocation();
 					}
@@ -199,7 +206,7 @@ public class MapActivity extends FragmentActivity {
 				@SuppressLint("NewApi")
 				public void run() {
 					setProgressBarIndeterminateVisibility(true);
-				    setProgressBarVisibility(true);
+					setProgressBarVisibility(true);
 				}
 			});
 		}
@@ -270,8 +277,8 @@ public class MapActivity extends FragmentActivity {
 			}
 
 			db.close();
-	        setProgressBarIndeterminateVisibility(false);
-	        setProgressBarVisibility(false);
+			setProgressBarIndeterminateVisibility(false);
+			setProgressBarVisibility(false);
 			map.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
 				@Override
 				public void onInfoWindowClick(Marker marker) {
@@ -309,17 +316,17 @@ public class MapActivity extends FragmentActivity {
 			 * + prefix, "string", getPackageName()))).position(point)
 			 * .draggable(true)); } });
 			 */
-			
-			map.addMarker(new MarkerOptions()
-			.title(getString(getResources().getIdentifier(
-					"you_here_string" + prefix, "string",
-					getPackageName())))
-			.snippet(
-					country + ", " + city + "\n" + addressLine + "\n"
-							+ stringLatitude + ", " + stringLongitude)
-			.position(myCoord));
 
-	map.moveCamera(CameraUpdateFactory.newLatLngZoom(myCoord, 8));
+			map.addMarker(new MarkerOptions()
+					.title(getString(getResources().getIdentifier(
+							"you_here_string" + prefix, "string",
+							getPackageName())))
+					.snippet(
+							country + ", " + city + "\n" + addressLine + "\n"
+									+ stringLatitude + ", " + stringLongitude)
+					.position(myCoord));
+
+			map.moveCamera(CameraUpdateFactory.newLatLngZoom(myCoord, 8));
 		}
 	}
 
@@ -332,12 +339,7 @@ public class MapActivity extends FragmentActivity {
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
 		prefix = prefs.getString("prefix", "");
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
 			setContentView(R.layout.activity_map);
 			AsyncMaps maps = new AsyncMaps();
@@ -414,7 +416,7 @@ public class MapActivity extends FragmentActivity {
 			return rootView;
 		}
 	}
-	
+
 	private void enableGpsModal() {
 		LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		boolean statusOfGPS = manager

@@ -147,18 +147,31 @@ public class RoutActivity extends FragmentActivity {
 							.split(",")[1]));
 
 					// Walking
-					GMapV2Direction mdDist = new GMapV2Direction();
-					Document doc_dist = mdDist.getDocument(myCoord,
-							myNearCoord, type);
-					ArrayList<LatLng> directionPointDist = mdDist
-							.getDirection(doc_dist);
-					distance = mdDist.getDistanceText(doc_dist);
-					time = mdDist.getDurationText(doc_dist);
-					rectLineDist = new PolylineOptions().width(6).color(
-							Color.GREEN);
+					if (isNetworkAvailable()) {
+						try {
+							GMapV2Direction mdDist = new GMapV2Direction();
+							Document doc_dist = mdDist.getDocument(myCoord,
+									myNearCoord, type);
+							ArrayList<LatLng> directionPointDist = mdDist
+									.getDirection(doc_dist);
+							distance = mdDist.getDistanceText(doc_dist);
+							time = mdDist.getDurationText(doc_dist);
+							rectLineDist = new PolylineOptions().width(6)
+									.color(Color.GREEN);
 
-					for (int i = 0; i < directionPointDist.size(); i++) {
-						rectLineDist.add(directionPointDist.get(i));
+							for (int i = 0; i < directionPointDist.size(); i++) {
+								rectLineDist.add(directionPointDist.get(i));
+							}
+						} catch (Exception ex) {
+						}
+					} else {
+						Toast toast = Toast.makeText(
+								getApplicationContext(),
+								getString(getResources().getIdentifier(
+										"no_inet_string" + prefix, "string",
+										getPackageName())), Toast.LENGTH_SHORT);
+						toast.setGravity(Gravity.CENTER, 0, 0);
+						toast.show();
 					}
 
 				}
@@ -276,15 +289,14 @@ public class RoutActivity extends FragmentActivity {
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
 		prefix = prefs.getString("prefix", "");
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		if (isNetworkAvailable()) {
 			if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
 				setContentView(R.layout.activity_rout);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+				}
 				AsyncMaps maps = new AsyncMaps();
 				maps.execute();
 				if (Build.VERSION.SDK_INT >= 15) {
@@ -338,10 +350,30 @@ public class RoutActivity extends FragmentActivity {
 		AsyncMaps maps = new AsyncMaps();
 		switch (item.getItemId()) {
 		case R.id.action_drive:
-			maps.execute("driving");
+			if (isNetworkAvailable()) {
+				maps.execute("driving");
+			} else {
+				Toast toast = Toast.makeText(
+						getApplicationContext(),
+						getString(getResources().getIdentifier(
+								"no_inet_string" + prefix, "string",
+								getPackageName())), Toast.LENGTH_SHORT);
+				toast.setGravity(Gravity.CENTER, 0, 0);
+				toast.show();
+			}
 			return true;
 		case R.id.action_walk:
-			maps.execute("walking");
+			if (isNetworkAvailable()) {
+				maps.execute("walking");
+			} else {
+				Toast toast = Toast.makeText(
+						getApplicationContext(),
+						getString(getResources().getIdentifier(
+								"no_inet_string" + prefix, "string",
+								getPackageName())), Toast.LENGTH_SHORT);
+				toast.setGravity(Gravity.CENTER, 0, 0);
+				toast.show();
+			}
 			return true;
 		case android.R.id.home:
 			Intent intent = new Intent(this, StartActivity.class);
@@ -349,10 +381,20 @@ public class RoutActivity extends FragmentActivity {
 			startActivity(intent);
 			return true;
 		case NEW_MENU_ID: {
-			if (map.getMapType() == GoogleMap.MAP_TYPE_NORMAL)
-				map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-			else if (map.getMapType() == GoogleMap.MAP_TYPE_HYBRID)
-				map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+			if (isNetworkAvailable()) {
+				if (map.getMapType() == GoogleMap.MAP_TYPE_NORMAL)
+					map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+				else if (map.getMapType() == GoogleMap.MAP_TYPE_HYBRID)
+					map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+			} else {
+				Toast toast = Toast.makeText(
+						getApplicationContext(),
+						getString(getResources().getIdentifier(
+								"no_inet_string" + prefix, "string",
+								getPackageName())), Toast.LENGTH_SHORT);
+				toast.setGravity(Gravity.CENTER, 0, 0);
+				toast.show();
+			}
 			return true;
 		}
 		default:

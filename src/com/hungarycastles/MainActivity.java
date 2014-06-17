@@ -33,13 +33,7 @@ public class MainActivity extends Activity {
 	
 	@Override
 	public void onBackPressed() {
-	}
-	
-	public void langHu(View v){
-		updateValue("_hu");
-		Intent i = new Intent(MainActivity.this,
-				StartActivity.class);
-		startActivity(i);
+		super.onBackPressed();
 	}
 	
 	public void langUa(View v){

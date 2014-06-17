@@ -2,9 +2,9 @@
 <resources>
 
     <!-- Ukrainian -->
-    <string name="app_name">UA Castles</string>
-    <string name="title_activity_start">UA Castles</string>
-    <string name="title_activity_main">UA Castles</string>
+    <string name="app_name">HU Castles</string>
+    <string name="title_activity_start">HU Castles</string>
+    <string name="title_activity_main">HU Castles</string>
     <string name="title_activity_info"></string>
     <string name="title_activity_places"></string>
     <string name="title_activity_rout"></string>
@@ -29,7 +29,7 @@
     <string name="change_view_ua">Змінити вигляд карти</string>
     <string name="change_language_ua">Змінити мову</string>
     <string name="rta_dialog_title_ua">Оцінити програму</string>
-    <string name="rta_dialog_message_ua">Бажаєте оцінити програму зараз? Ваш голос для нашс є важливий.</string>
+    <string name="rta_dialog_message_ua">Бажаєте оцінити програму зараз? Ваш голос для нас є важливий.</string>
     <string name="rta_dialog_ok_ua">Так</string>
     <string name="rta_dialog_cancel_ua">Не зараз</string>
     <string name="rta_dialog_no_ua">Ні, дякую</string>
@@ -37,6 +37,33 @@
     <string name="about_menu_ua">Про нас</string>
     <string name="about_message_ua">Дякуємо, що користуєтеся нашою програмою. Надіємося, що вона Вам подобається. Якщо у Вас є відгуки, побажання чи зауваження, то Ви можете написати їх на електронну адресу </string>
     <string name="about_second_ua"> або через соціальні мережі </string>
+    <!-- Hungarian -->
+    <string name="add_place_string_hu">Kattintson ide, hogy egy helyre</string>
+    <string name="dialog_title_string_hu">Ne zárja be a programot</string>
+    <string name="you_here_string_hu">Ön itt van</string>
+    <string name="no_inet_string_hu">Internet kapcsolat hiányzik</string>
+    <string name="no_google_play_services_hu">Google Play szolgáltatások hiányoznak</string>
+    <string name="load_string_hu">Letöltések. Kérjük, várjon ..</string>
+    <string name="start_button_map_hu">Térkép</string>
+    <string name="start_button_places_hu">Helyek</string>
+    <string name="add_coord_hu">Koordináták: </string>
+    <string name="add_name_hu">Név:</string>
+    <string name="add_descr_hu">Leírás:</string>
+    <string name="add_done_hu">Befejez</string>
+    <string name="add_thanks_hu">Köszönöm!</string>
+    <string name="description_info_hu">Az információ www.7chudes.in.ua</string>
+    <string name="touch_here_hu">Erintse meg itt</string>
+    <string name="change_view_hu">Térkép nézet</string>
+    <string name="change_language_hu">Nyelv</string>
+    <string name="rta_dialog_title_hu">Szavazz a program</string>
+    <string name="rta_dialog_message_hu">Szeretné, hogy értékelje a programot most? Az Ön szavazata fontos számunkra.</string>
+    <string name="rta_dialog_ok_hu">Igy</string>
+    <string name="rta_dialog_cancel_hu">Nem ki</string>
+    <string name="rta_dialog_no_hu">Nem, köszönöm</string>
+    <string name="turn_gps_hu">Kérjük, kapcsolja be a GPS</string>
+    <string name="about_menu_hu">Rólunk</string>
+    <string name="about_message_hu">Köszönjük, hogy a szoftver. Reméljük, hogy tetszeni fog. Ha bármilyen észrevétele, javaslata, észrevétele van, kapcsolatba léphet velük e-mailben </string>
+    <string name="about_second_hu"> vagy a szociális hálózatok </string>
     <!-- Polish -->
     <string name="add_place_string_pl">Kliknij tutaj, aby dodać miejsce</string>
     <string name="dialog_title_string_pl">Nie zamykaj programu</string>

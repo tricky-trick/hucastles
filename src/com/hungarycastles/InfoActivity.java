@@ -102,7 +102,7 @@ public class InfoActivity extends BaseActivity implements MediaPlayerControl {
 					spanString.length(), 0);
 			spanString.setSpan(new StyleSpan(Typeface.ITALIC), 0,
 					spanString.length(), 0);
-			textUri = (TextView) findViewById(R.id.textView3);
+			//textUri = (TextView) findViewById(R.id.textView3);
 			// buttonPlay = (ImageButton) findViewById(R.id.button1);
 			// buttonStop = (ImageButton) findViewById(R.id.button2);
 			// buttonPlay.setBackgroundResource(R.drawable.play);
@@ -112,7 +112,7 @@ public class InfoActivity extends BaseActivity implements MediaPlayerControl {
 					"drawable/" + image, null, this.getPackageName()));
 			textTitle.setText(title);
 			textDescription.setText(description + "\n\n");
-			textUri.setText(spanString);
+			//textUri.setText(spanString);
 
 			mMediaPlayer = new MediaPlayer();
 			mMediaController = new MediaController(this);

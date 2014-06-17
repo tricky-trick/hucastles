@@ -56,6 +56,13 @@ public class MainActivity extends Activity {
 				StartActivity.class);
 		startActivity(i);
 	}
+	
+	public void langHu(View v){
+		updateValue("_hu");
+		Intent i = new Intent(MainActivity.this,
+				StartActivity.class);
+		startActivity(i);
+	}
 
 	private void updateValue(String val) {
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -63,6 +70,8 @@ public class MainActivity extends Activity {
 		editor.putString("prefix", val);
 		editor.commit();
 	}
+	
+	
 
 	@SuppressWarnings("unused")
 	private void addShortcut() {

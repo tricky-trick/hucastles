@@ -91,6 +91,10 @@ public class InfoActivity extends BaseActivity implements MediaPlayerControl {
 			}
 			if (audioFile.contains("null"))
 				audioFile = "audio.mp3";
+			if (description.equals("")) {
+				description = getString(getResources().getIdentifier(
+						"empty_info" + prefix, "string", getPackageName()));
+			}
 			imageView = (ImageView) findViewById(R.id.imageView1);
 			textTitle = (TextView) findViewById(R.id.textView1);
 			SpannableString spanString = new SpannableString(
@@ -102,7 +106,7 @@ public class InfoActivity extends BaseActivity implements MediaPlayerControl {
 					spanString.length(), 0);
 			spanString.setSpan(new StyleSpan(Typeface.ITALIC), 0,
 					spanString.length(), 0);
-			//textUri = (TextView) findViewById(R.id.textView3);
+			// textUri = (TextView) findViewById(R.id.textView3);
 			// buttonPlay = (ImageButton) findViewById(R.id.button1);
 			// buttonStop = (ImageButton) findViewById(R.id.button2);
 			// buttonPlay.setBackgroundResource(R.drawable.play);
@@ -112,7 +116,7 @@ public class InfoActivity extends BaseActivity implements MediaPlayerControl {
 					"drawable/" + image, null, this.getPackageName()));
 			textTitle.setText(title);
 			textDescription.setText(description + "\n\n");
-			//textUri.setText(spanString);
+			// textUri.setText(spanString);
 
 			mMediaPlayer = new MediaPlayer();
 			mMediaController = new MediaController(this);
@@ -143,7 +147,7 @@ public class InfoActivity extends BaseActivity implements MediaPlayerControl {
 			toast.show();
 			onBackPressed();
 		}
-		
+
 		enableGpsModal(prefix);
 	}
 
@@ -269,12 +273,12 @@ public class InfoActivity extends BaseActivity implements MediaPlayerControl {
 		return super.onCreateOptionsMenu(menu);
 	}
 
-//	public void goToMap(View v) {
-//		if (Build.VERSION.SDK_INT <= 15) {
-//			Intent i = new Intent(InfoActivity.this, RoutActivity.class);
-//			i.putExtra("title", textTitle.getText());
-//			startActivity(i);
-//		}
-//	}
+	// public void goToMap(View v) {
+	// if (Build.VERSION.SDK_INT <= 15) {
+	// Intent i = new Intent(InfoActivity.this, RoutActivity.class);
+	// i.putExtra("title", textTitle.getText());
+	// startActivity(i);
+	// }
+	// }
 
 }

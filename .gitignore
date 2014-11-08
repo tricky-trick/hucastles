@@ -13,3 +13,5 @@ a.settings/
 /gen
 
 /lint.xml
+
+*.prefs
